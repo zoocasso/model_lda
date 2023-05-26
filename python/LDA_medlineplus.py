@@ -1,3 +1,6 @@
+"""
+    medlineplus의 Summary들을 데이터로 삼아 LDA로 토픽 모델링하는 코드
+"""
 import config
 
 import pymysql
@@ -23,8 +26,7 @@ conn = db_connection.connect()
 connection = pymysql.connect(host=config.DATABASE_CONFIG['host'],
                             user=config.DATABASE_CONFIG['user'],
                             password=config.DATABASE_CONFIG['password'],
-                            database=config.DATABASE_CONFIG['dbname'],
-                            cursorclass=pymysql.cursors.DictCursor)
+                            database=config.DATABASE_CONFIG['dbname'])
 cursor = connection.cursor()
 
 cursor.execute("SELECT topic_name, content FROM medlineplus WHERE title = 'Summary';")
